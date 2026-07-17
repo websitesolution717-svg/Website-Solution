@@ -25,8 +25,8 @@
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const numeroTelefone = "244937291459"; // Seu contacto configurado
-            const textoMensagem = `Olá Felisberto, gostaria de solicitar um orçamento:\n\n` +
+            const numeroTelefone = "244927908720"; // Seu contacto configurado
+            const textoMensagem = `Olá Website Solution, gostaria de solicitar um orçamento:\n\n` +
                                   `*Serviço:* ${tipoServico.value}\n` +
                                   `*Prazo:* ${prazo.value}\n` +
                                   `*Detalhes:* ${detalhes.value}`;
