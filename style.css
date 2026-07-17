@@ -557,36 +557,57 @@
 
         .copyright { text-align: center; color: var(--texto-mutado); font-size: 0.85rem; border-top: 1px solid var(--borda); padding-top: 20px; }
 
-        /* --- RESPONSIVIDADE --- */
-        @media (max-width: 768px) {
-            .nav-links { display: none; } /* Ideal implementar menu hambúrguer futuramente */
-            .hero h1 { font-size: 2.2rem; }
-            .about-layout { grid-template-columns: 1fr; text-align: center; }
-            .about-image { order: -1; }
-            .order-form { grid-template-columns: 1fr; }
-            .form-group.full-width, .btn-submit { grid-column: span 1; }
-            .footer-grid { grid-template-columns: 1fr; }
 
-            /* Localize a classe da sua imagem e deixe-a assim: */
-.about-imge {
-    /* REMOVA qualquer linha que diga: position: absolute; ou float: right/left; */
+
+ 
+
+
+/* --- RESET SEGURO PARA MOBILE (Para ecrãs até 768px) --- */
+@media (max-width: 768px) {
     
-    position: static;        /* Força a imagem a voltar para o fluxo normal */
-    display: block;
-    max-width: 100%;         /* Impede que ela estoure o ecrã do telemóvel */
-    height: auto;
-    margin: 20px auto;       /* Centraliza a foto e dá um espaço seguro acima e abaixo */
-    border-radius: 50%;      /* Mantém o círculo perfeito que você colocou */
-    border: 4px solid #00a8ff; /* Mantém a sua borda azul bonita */
-}
+    /* 1. Corrige as secções para que fiquem uma abaixo da outra sem flutuar */
+    section, .hero, .about-container, .metrics-grid {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+        width: 100% !important;
+        height: auto !important; /* Remove alturas fixas que esmagam o texto */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        padding: 40px 20px !important;
+        box-sizing: border-box !important;
+    }
 
-    .container {
-    display: flex;
-    flex-wrap: wrap;       /* Permite a quebra de linha */
-    gap: 30px;             /* Cria um espaçamento seguro entre o texto e a imagem */
-    justify-content: center; /* Centraliza os elementos quando quebrarem */
-    align-items: center;
-}
+    /* 2. Limpa a sobreposição dos títulos e textos */
+    h1, h2, h3, p {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        margin: 10px 0 !important;
+        width: 100% !important;
+    }
 
-        }
+    /* 3. Ajusta os blocos de estatísticas (os "1+") para não esmagarem */
+    .metrics-grid {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Fica em 2 colunas organizadas */
+        gap: 20px !important;
+    }
+
+    /* 4. Força a sua imagem a aparecer no lugar certo, abaixo do texto */
+    .about-imge {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        display: block !important;
+        max-width: 250px !important; /* Tamanho ideal para telemóvel */
+        height: auto !important;
+        margin: 20px auto 0 auto !important;
+        border-radius: 50% !important;
+    }
+}
+        
    
