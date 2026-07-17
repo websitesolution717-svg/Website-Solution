@@ -559,55 +559,82 @@
 
 
 
- 
-
-
-/* --- RESET SEGURO PARA MOBILE (Para ecrãs até 768px) --- */
+/* --- CORREÇÃO COMPLETA DE RESPONSIVIDADE (MOBILE) --- */
 @media (max-width: 768px) {
     
-    /* 1. Corrige as secções para que fiquem uma abaixo da outra sem flutuar */
-    section, .hero, .about-container, .metrics-grid {
+    /* 1. Impede o site de vazar para os lados e remove a rolagem horizontal */
+    html, body {
+        width: 100%;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 2. Corrige o Menu do Topo (para os links não vazarem na direita) */
+    header, nav {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        width: 100% !important;
+        gap: 10px !important;
+    }
+
+    /* 3. Força todas as secções principais a caberem no ecrã */
+    section, .hero, .container, #sobre {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 40px 20px !important; /* Margem interna segura nas laterais */
+        box-sizing: border-box !important; /* Garante que o padding não aumente o tamanho do bloco */
+        display: flex !important;
+        flex-direction: column !important; /* Empilha tudo verticalmente */
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    /* 4. Ajusta o texto para ele ocupar o ecrã inteiro sem esmagar */
+    .about-text, section p, section h2 {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 5. Faz a imagem voltar a aparecer perfeitamente centralizada abaixo do texto */
+    .about-image, .dev-avatar-box, .testical-card img{
+        display: block !important;
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
+        max-width: 260px !important; /* Tamanho ideal para a foto no mobile */
         width: 100% !important;
-        height: auto !important; /* Remove alturas fixas que esmagam o texto */
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        padding: 40px 20px !important;
-        box-sizing: border-box !important;
-    }
-
-    /* 2. Limpa a sobreposição dos títulos e textos */
-    h1, h2, h3, p {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        margin: 10px 0 !important;
-        width: 100% !important;
-    }
-
-    /* 3. Ajusta os blocos de estatísticas (os "1+") para não esmagarem */
-    .metrics-grid {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important; /* Fica em 2 colunas organizadas */
-        gap: 20px !important;
-    }
-
-    /* 4. Força a sua imagem a aparecer no lugar certo, abaixo do texto */
-    .about-imge {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        display: block !important;
-        max-width: 250px !important; /* Tamanho ideal para telemóvel */
         height: auto !important;
-        margin: 20px auto 0 auto !important;
-        border-radius: 50% !important;
+        margin: 30px auto 0 auto !important;
     }
-}
-        
-   
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
