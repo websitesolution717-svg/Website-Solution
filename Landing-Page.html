@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!DOCTYPE html>
 <html lang="pt-PT">
@@ -720,3 +721,727 @@
 
 
 
+=======
+
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Solution - Presença Digital Impactante</title>
+    <!-- Ícones Modernos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIÁVEIS DE DESIGN INTERNACIONAL --- */
+        :root {
+            --bg-principal: #0f141c;
+            --bg-card: #161f2c;
+            --bg-input: #1b2636;
+            --azul-marca: #00a8ff;
+            --azul-hover: #0086cc;
+            --dourado-cta: linear-gradient(135deg, #fbc531, #e1b12c);
+            --texto-claro: #f5f6fa;
+            --texto-mutado: #a4b0be;
+            --borda: rgba(255, 255, 255, 0.05);
+            --sombra: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- RESET & CONFIGURAÇÕES GERAIS --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .divisor {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            margin: 60px 0;
+        }
+
+        /* --- HEADER & NAVEGAÇÃO --- */
+        header {
+            background-color: rgba(15, 20, 28, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--borda);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--texto-claro);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span { color: var(--azul-marca); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--texto-mutado);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--texto-claro); }
+
+        .btn-nav {
+            background: var(--azul-marca);
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+        .btn-nav:hover { background: var(--azul-hover); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 150px 0 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at top, rgba(0, 168, 255, 0.1), transparent 60%);
+        }
+
+        .hero h3 {
+            color: var(--azul-marca);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            max-width: 750px;
+            margin: 0 auto 30px auto;
+            color: var(--texto-mutado);
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--azul-marca);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 168, 255, 0.3);
+            transition: all 0.3s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 168, 255, 0.5); }
+
+        /* Métrica Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+        }
+
+        .metric-card h2 { font-size: 2.5rem; color: var(--azul-marca); margin-bottom: 5px; }
+        .metric-card p { color: var(--texto-mutado); font-size: 0.9rem; }
+
+        /* --- SEÇÃO SOBRE --- */
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h3 { color: var(--azul-marca); margin-bottom: 10px; }
+        .about-text h2 { font-size: 2.2rem; margin-bottom: 20px; }
+        .about-text p { color: var(--texto-mutado); margin-bottom: 15px; }
+
+        .about-image {
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Elemento ilustrativo substituindo a foto do desenvolvedor */
+        .dev-avatar-box {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, var(--bg-card), #1e2d42);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 4px solid var(--azul-marca);
+            box-shadow: var(--sombra);
+        }
+        .dev-avatar-box i { font-size: 8rem; color: var(--azul-marca); }
+
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: transparent;
+            color: var(--texto-claro);
+            border: 1px solid var(--texto-mutado);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .btn-cv:hover { background: rgba(255,255,255,0.05); border-color: white; }
+
+        /* --- SERVIÇOS --- */
+        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--azul-marca); }
+        .service-icon { font-size: 2rem; color: var(--azul-marca); margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 12px; font-size: 1.3rem; }
+        .service-card p { color: var(--texto-mutado); font-size: 0.95rem; }
+
+        /* --- PROJECTOS (CASES DE SUCESSO) --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--borda);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px;
+        }
+
+        .project-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
+        .project-card p { color: var(--texto-mutado); font-size: 0.95rem; margin-bottom: 20px; }
+        .project-meta { font-size: 0.8rem; color: var(--azul-marca); margin-bottom: 15px; font-style: italic; }
+
+        .project-actions { display: flex; justify-content: space-between; align-items: center; }
+        .btn-link { color: var(--texto-claro); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+        .btn-link:hover { color: var(--azul-marca); }
+
+        .btn-cta-small {
+            background: var(--dourado-cta);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* --- DEPOIMENTOS --- */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--borda);
+            position: relative;
+        }
+
+        .testimonial-card p { color: var(--texto-mutado); font-style: italic; margin-bottom: 20px; }
+        .testimonial-card h4 { font-size: 1.1rem; color: var(--texto-claro); }
+        .testimonial-card span { font-size: 0.85rem; color: var(--azul-marca); }
+
+        /* --- INTERATIVIDADE: FORMULÁRIO DE PEDIDOS --- */
+        .order-section {
+            background: linear-gradient(180deg, var(--bg-card), var(--bg-principal));
+            padding: 60px 40px;
+            border-radius: 16px;
+            border: 1px solid var(--borda);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .order-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group.full-width { grid-column: span 2; }
+
+        label { font-size: 0.9rem; color: var(--texto-claro); font-weight: 500; }
+        
+        select, input, textarea {
+            background-color: var(--bg-input);
+            border: 1px solid var(--borda);
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        select:focus, input:focus, textarea:focus { border-color: var(--azul-marca); }
+
+        .btn-submit {
+            grid-column: span 2;
+            background: var(--dourado-cta);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .btn-submit:hover { opacity: 0.9; }
+
+        /* Resumo do Pedido Realtime */
+        .order-summary {
+            grid-column: span 2;
+            background: rgba(0, 168, 255, 0.05);
+            border: 1px dashed var(--azul-marca);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 60px 0 30px 0;
+            background: #0b0f14;
+            border-top: 1px solid var(--borda);
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-info h3, .footer-social h3 { margin-bottom: 20px; font-size: 1.2rem; }
+        .footer-info p { margin-bottom: 10px; color: var(--texto-mutado); }
+        .footer-info i { color: var(--azul-marca); margin-right: 10px; }
+
+        .social-icons { display: flex; flex-wrap: wrap; gap: 15px; }
+        .social-icons a {
+            color: var(--texto-mutado);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-card);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .social-icons a:hover { color: white; background: var(--azul-marca); }
+
+        .copyright { text-align: center; color: var(--texto-mutado); font-size: 0.85rem; border-top: 1px solid var(--borda); padding-top: 20px; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .nav-links { display: none; } /* Ideal implementar menu hambúrguer futuramente */
+            .hero h1 { font-size: 2.2rem; }
+            .about-layout { grid-template-columns: 1fr; text-align: center; }
+            .about-image { order: -1; }
+            .order-form { grid-template-columns: 1fr; }
+            .form-group.full-width, .btn-submit { grid-column: span 1; }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+        
+    </style>
+
+</head>
+<body>
+
+    <!-- MENUS -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Website <span>Solution</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#projectos">Projectos</a></li>
+                    <li><a href="#testemunhos">Depoimentos</a></li>
+                    <li><a href="#orcamento" class="btn-nav">Solicitar Orçamento</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h3>Sua Parceira Estratégica</h3>
+            <h1>Presença Digital Impactante</h1>
+            <p>Transformamos ideias em plataformas digitais de alta performance. Desenvolvemos designs atraentes, sites institucionais e páginas de vendas focadas em converter visitantes em clientes em Luanda e no mercado global.</p>
+            <a href="#orcamento" class="btn-primary">Iniciar Meu Projecto</a>
+            
+            <div class="metrics-grid">
+                <div class="metric-card"><h2>2+</h2><p>Clientes Satisfeitos</p></div>
+                <div class="metric-card"><h2>5+</h2><p>Projectos Concluídos</p></div>
+                <div class="metric-card"><h2>1+</h2><p>Anos de Experiência</p></div>
+                <div class="metric-card"><h2>1+</h2><p>Parcerias Estratégicas</p></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><hr class="divisor"></div>
+
+    <!-- SOBRE NÓS -->
+    <section id="sobre" class="about">
+        <div class="container">
+            <div class="about-layout">
+                <div class="about-text">
+                    <h3>Construindo o Amanhã</h3>
+                    <h2>Sobre a Website Solution</h2>
+                    <p>Prazer, o meu nome é <strong>Felisberto Katanha</strong>, desenvolvedor web Full-Stack e fundador da marca angolana <strong>Website Solution</strong>.</p>
+                    <p>Desenvolvo ecossistemas modernos sob medida, combinando velocidade extrema, código limpo e arquitetura focada em SEO. O objetivo é dar ao seu negócio a visibilidade digital que ele merece.</p>
+                    <a href="#" class="btn-cv"><i class="fa-solid fa-download"></i> Baixar Curriculum Vitae</a>
+                </div>
+                <div class="about-image">
+                    <div class="dev-avatar-box">
+                        <i class="fa-solid fa-user-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><hr class="divisor"></div>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos">
+        <div class="container">
+            <h2 class="section-title">Nossas Especialidades</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fa-solid fa-bezier-curve service-icon"></i>
+                    <h3>Design Criativo</h3>
+                    <p>Interfaces refinadas, intuitivas e desenhadas especificamente para maximizar a retenção do seu público.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-gem service-icon"></i>
+                    <h3>Branding Digital</h3>
+                    <p>Construção e posicionamento visual para consolidar a sua marca como autoridade do segmento.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-code service-icon"></i>
+                    <h3>Código Otimizado</h3>
+                    <p>Desenvolvimento focado em performance mobile, velocidade de carregamento e boas práticas estruturais.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fa-solid fa-bolt service-icon"></i>
+                    <h3>Suporte & Evolução</h3>
+                    <p>Manutenção preventiva ágil para garantir estabilidade operacional total do seu site.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><hr class="divisor"></div>
+
+    <!-- CASES / PROJECTOS -->
+    <section id="projectos">
+        <div class="container">
+            <h2 class="section-title">Modelos Digitais de Negócio</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div>
+                        <h3>Portfólio Profissional</h3>
+                        <p>O seu cartão de visitas definitivo para o mercado. Exiba os seus projetos corporativos com design imersivo de alta conversão.</p>
+                    </div>
+                    <div>
+                        <div class="project-meta">Ideal para: Engenheiros, Consultores, Criativos</div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-link">Ver Exemplo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="#orcamento" class="btn-cta-small">Solicitar Agora</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div>
+                        <h3>Plataformas para Restaurantes</h3>
+                        <p>Apresente menus interativos de forma sofisticada, integrando botões de ação dinâmica focados em reservas locais e delivery eficiente.</p>
+                    </div>
+                    <div>
+                        <div class="project-meta">Foco: Integração com WhatsApp e Menus Digitais</div>
+                        <div class="project-actions">
+                            <a href="#" class="btn-link">Ver Exemplo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                            <a href="#orcamento" class="btn-cta-small">Modernizar Espaço</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><hr class="divisor"></div>
+
+    <!-- TESTEMUNHOS -->
+    <section id="testemunhos">
+        <div class="container">
+            <h2 class="section-title">O Que Dizem Nossos Parceiros</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p>"A agilidade técnica na entrega e a sofisticação visual do layout superaram as nossas expectativas comerciais iniciais."</p>
+                    <h4>Madalena Albano</h4>
+                    <span>Diretora Executiva</span>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Excelente posicionamento estratégico. O site gerou leads qualificados logo no primeiro mês pós-lançamento operacional."</p>
+                    <h4>Oliveira Calitangui</h4>
+                    <span>Gestor Comercial</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><hr class="divisor"></div>
+
+    <!-- SOLICITAR SERVIÇO INTERATIVO -->
+    <section id="orcamento">
+        <div class="container">
+            <h2 class="section-title">Configurar Pedido de Serviço</h2>
+            <div class="order-section">
+                <form id="formPedido" class="order-form">
+                    <div class="form-group">
+                        <label for="tipoServico">Tipo de Serviço</label>
+                        <select id="tipoServico" required>
+                            <option value="">Selecione...</option>
+                            <option value="Portfolio Profissional">Portfólio Profissional</option>
+                            <option value="Site para Restaurante">Site Corporativo / Restaurante</option>
+                            <option value="Landing Page de Alta Conversao">Landing Page / Vendas</option>
+                            <option value="Consultoria Estrategica">Consultoria Estratégica</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="prazo">Prazo Desejado</label>
+                        <select id="prazo" required>
+                            <option value="Urgente (Ate 7 dias)">Urgente (Até 7 dias)</option>
+                            <option value="Normal (15 a 30 dias)" selected>Normal (15 a 30 dias)</option>
+                            <option value="Flexivel">Flexível</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="detalhes">Objetivo Principal do Projeto</label>
+                        <textarea id="detalhes" rows="4" placeholder="Ex: Aumentar vendas, captação de clientes, portfólio pessoal..." required></textarea>
+                    </div>
+                    
+                    <div class="order-summary" id="resumoJanela">
+                        <strong>Previsão de Configuração de Pedido:</strong>
+                        <p id="resumoTexto"></p>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Enviar Pedido via WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <h3>Contactos Oficiais</h3>
+                    <p><i class="fa-solid fa-phone"></i> +244 937 291 459</p>
+                    <p><i class="fa-solid fa-envelope"></i> felisbertosanando@email.com</p>
+                    <p><i class="fa-solid fa-location-dot"></i> Luanda, Angola</p>
+                </div>
+                <div class="footer-social">
+                    <h3>Website Solution Digital</h3>
+                    <p style="color: var(--texto-mutado); margin-bottom: 15px;">Acompanhe o lançamento de soluções tecnológicas nas nossas redes oficiais:</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i> Facebook</a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i> YouTube</a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2026 Website Solution. Todos os direitos reservados de forma integral.</p>
+        </div>
+    </footer>
+
+    <!-- INTERATIVIDADE JAVASCRIPT -->
+    <script>
+        const tipoServico = document.getElementById('tipoServico');
+        const prazo = document.getElementById('prazo');
+        const detalhes = document.getElementById('detalhes');
+        const resumoJanela = document.getElementById('resumoJanela');
+        const resumoTexto = document.getElementById('resumoTexto');
+        const form = document.getElementById('formPedido');
+
+        // Atualização em tempo real do resumo para dar interatividade ao cliente
+        function atualizarResumo() {
+            if(tipoServico.value) {
+                resumoJanela.style.display = 'block';
+                resumoTexto.innerHTML = `Solicitação para <strong>${tipoServico.value}</strong> com prioridade <strong>${prazo.value}</strong>.`;
+            } else {
+                resumoJanela.style.display = 'none';
+            }
+        }
+
+        tipoServico.addEventListener('change', atualizarResumo);
+        prazo.addEventListener('change', atualizarResumo);
+
+        // Processa o formulário e envia os dados formatados diretamente para o seu WhatsApp corporativo
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const numeroTelefone = "244937291459"; // Seu contacto configurado
+            const textoMensagem = `Olá Felisberto, gostaria de solicitar um orçamento:\n\n` +
+                                  `*Serviço:* ${tipoServico.value}\n` +
+                                  `*Prazo:* ${prazo.value}\n` +
+                                  `*Detalhes:* ${detalhes.value}`;
+            
+            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numeroTelefone}&text=${encodeURIComponent(textoMensagem)}`;
+            
+            window.open(urlWhatsApp, '_blank');
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 5b66f4a (Primeira versão do Website Solution)
