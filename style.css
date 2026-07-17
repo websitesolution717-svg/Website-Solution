@@ -559,60 +559,47 @@
 
 
 
-/* --- CORREÇÃO COMPLETA DE RESPONSIVIDADE (MOBILE) --- */
+
+/* --- RESET COMPLETO PARA TELEMÓVEL (Abaixo de 768px) --- */
 @media (max-width: 768px) {
     
-    /* 1. Impede o site de vazar para os lados e remove a rolagem horizontal */
-    html, body {
-        width: 100%;
-        overflow-x: hidden;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* 2. Corrige o Menu do Topo (para os links não vazarem na direita) */
-    header, nav {
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
-        width: 100% !important;
-        gap: 10px !important;
-    }
-
-    /* 3. Força todas as secções principais a caberem no ecrã */
-    section, .hero, .container, #sobre {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 40px 20px !important; /* Margem interna segura nas laterais */
-        box-sizing: border-box !important; /* Garante que o padding não aumente o tamanho do bloco */
-        display: flex !important;
-        flex-direction: column !important; /* Empilha tudo verticalmente */
-        align-items: center !important;
-        text-align: center !important;
-    }
-
-    /* 4. Ajusta o texto para ele ocupar o ecrã inteiro sem esmagar */
-    .about-text, section p, section h2 {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 5. Faz a imagem voltar a aparecer perfeitamente centralizada abaixo do texto */
-    .about-image, .dev-avatar-box, .testical-card img{
-        display: block !important;
+    /* 1. Remove qualquer posicionamento fantasma e empilha as secções */
+    body, section, div, header, nav {
         position: relative !important;
         top: auto !important;
         left: auto !important;
         transform: none !important;
-        max-width: 260px !important; /* Tamanho ideal para a foto no mobile */
         width: 100% !important;
         height: auto !important;
-        margin: 30px auto 0 auto !important;
+        box-sizing: border-box !important;
     }
-} 
+
+    /* 2. Força o container do "Sobre" e das "Estatísticas" a virarem uma coluna perfeita */
+    .about, .estatisticas-container, #about {
+        display: flex !important;
+        flex-direction: column !important; /* Coloca um elemento abaixo do outro */
+        align-items: center !important;
+        text-align: center !important;
+        padding: 20px !important;
+    }
+
+    /* 3. Ajusta os blocos azuis (1+) para não flutuarem por cima de nada */
+    /* Substitua '.estatisticas-box' pela classe real dos teus cards se for diferente */
+    .estatisticas-box, .metric-card {
+        position: relative !important;
+        display: block !important;
+        margin: 15px auto !important;
+        width: 90% !important;
+        max-width: 280px !important;
+    }
+
+    /* 4. Garante que o texto ocupe a largura do telemóvel sem cortar */
+    p, h1, h2, h3 {
+        width: 100% !important;
+        padding: 0 10px !important;
+        margin: 10px 0 !important;
+    }
+}
 
 
 
