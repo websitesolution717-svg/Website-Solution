@@ -567,3 +567,17 @@
             .form-group.full-width, .btn-submit { grid-column: span 1; }
             .footer-grid { grid-template-columns: 1fr; }
         }
+         
+        .container {
+    display: flex;
+    flex-wrap: wrap;       /* Permite a quebra de linha */
+    gap: 30px;             /* Cria um espaçamento seguro entre o texto e a imagem */
+    justify-content: center; /* Centraliza os elementos quando quebrarem */
+    align-items: center;
+}
+
+/* Garante que o texto e a imagem ocupem o espaço certo em telas menores */
+.about-text, .about-image {
+    flex: 1 1 400px;       /* Tenta manter 400px de largura; se a tela for menor que isso, eles quebram e crescem para ocupar 100% */
+    min-width: 300px;      /* Impede que fiquem espremidos demais antes de quebrar */
+}
