@@ -12,11 +12,11 @@
 <body>
     <!-- MENUS -->
     <header>
-        <div class="container">
+        <class="container">
             <nav>
                 <div class="logo">
                 <!--Imagem como logo-->
-                <img src="imagens/file_0000000075ec71f5b12942d522de0e2a.png" alt="logo pessoal">
+                <img src="imagens/file_00000000c56081f48132cda250b6a8ba.png" alt="logo pessoal">
                 Website <span>Solution</span>
                 </div>
                 <ul class="nav-links">
@@ -27,8 +27,51 @@
                     <li><a href="#testemunhos">Depoimentos</a></li>
                     <li><a href="#orcamento" class="btn-nav">Solicitar Orçamento</a></li>
                 </ul>
-            </nav>
         </div>
+
+
+    
+<!-- Cole esta linha dentro da tag <head> do seu site para ativar os ícones -->
+<link rel="stylesheet" href="https://cloudflare.com">
+
+<!-- Botão de Menu (Hambúrguer) - Invisível no PC, visível no telemóvel -->
+<button class="menu-toggle" id="openMenu" aria-label="Abrir menu">
+  <div class="bar"></div>
+  <div class="bar"></div>
+  <div class="bar"></div>
+</button>
+
+<!-- Menu Lateral Dinâmico -->
+<nav class="sidebar-menu" id="sidebarMenu">
+  <button class="close-toggle" id="closeMenu" aria-label="Fechar menu">✕</button>
+
+  <!-- Logótipo Centrado da Website Solution -->
+  <div class="brand-container">
+    <img src="imagens/file_00000000c56081f48132cda250b6a8ba.png" alt="Website Solution" class="brand-logo">
+  </div>
+  
+  <!-- Links com Ícones Correspondentes e Animação em Cascata -->
+  <ul class="sidebar-links">
+    <li style="--i:1;">
+      <a href="#home"><i class="fa-solid fa-house"></i> Início</a>
+    </li>
+    <li style="--i:2;">
+     <a href="#servicos"><i class="fa-solid fa-laptop-code"></i> Serviços</a>
+    </li>
+    <li style="--i:3;">
+      <a href="#projectos"><i class="fa-solid fa-briefcase"></i> Portfólio</a>
+    </li>
+    <li style="--i:4;">
+      <a href="#sobre"><i class="fa-solid fa-users"></i> Sobre Nós</a>
+    </li>
+    <li style="--i:5;">
+      <a href="#contacto"><i class="fa-solid fa-envelope"></i> Contacto</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- Fundo escurecido com desfoque -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
     </header>
 
     <!-- HERO -->
@@ -178,16 +221,18 @@
             <h2 class="section-title">A Website Solution Tem Foco Em:</h2>
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <img src="imagens/1767360810564.jpg">
-                    <p>"A agilidade técnica na entrega e a sofisticação visual do layout superaram as nossas expectativas comerciais iniciais."</p>
+                     <img src="imagens/00e449dd-eb9b-4488-80ad-4fe5b382c9d4.jpeg">
+                    <p>"Tecnologia, actuanddo fortemente na área de desenvolvimento web, criando soluções inovadoras e eficientes para marcas 
+                        angolanas e não so, a se destacarem das demais, explorando e descobrindo o seu real potencial no digital. Foco principal, 
+                        o posicionamento estratégico no mercado digital de marcas."</p>
                     <h4>Trabalha no ramo da tecnologia</h4>
                     <span>PROGRAMAÇÃO WEB</span>
                 </div>
 
                 <div class="testimonial-card">
-                    <img src="imagens/Social Media Design _ Branding Comunicativo.jpeg">
-                    <p>"A Website Solution tem uma parceria direita com a Digital Society, uma das marca angolanas que tem crescido muito no mercado digital 
-                        sendo sua maior especialidade: Marketing Digital."</p>
+                    <img src="imagens/IMG-20260315-WA0009.jpg">
+                    <p>"A Website Solution tem uma parceria direita com a Digital Society, uma das marca angolanas que tem crescido muito no mercado 
+                        digital sendo sua maior especialidade: Marketing Digital, criação de branding, mideas, desin."</p>
                     <h4>Digital Society</h4>
                     <span>MARKETING DITIGITAL</span>
                 </div>
@@ -203,22 +248,10 @@
         <div class="testemunhos-grid">
             <div class="testemunho-card">
                 <img src="imagens/IMG-20260315-WA0009.jpg">
-                <p>"Cada prato impressiona tanto pela apresentação como pelo sabor. Uma experiência gastronómica memorável do início ao fim."</p>
-                <h4>Digital Society</h4>
+                <p>"Agradeço pelo excelente trabalho realizado. A Website Solution foi profissional e entregou a tempo e com alta qualidade,
+                    o meu portfolio digital."</p>
+                <h4>Daniel Catanha (Designer e fundador da Digital Society)</h4>
             </div>
-
-            <div class="testemunho-card">
-                <img src="imagens/a964548f-ea70-4b85-9932-710f76526f86.jpeg">
-                <p>"Cada prato impressiona tanto pela apresentação como pelo sabor. Uma experiencia gastronomica memoravel do inicio ao fim."</p>
-                <h4>Daniel Kiponde</h4>
-            </div>
-
-            <div class="testemunho-card">
-                <img src="imagens/56dae668-d9a0-4d6b-b674-825027d88655_1.jpeg">
-                <p>"Ideal para um jantar especial. O espaço transmite sofisticação e tranquilidade."</p>
-                <h4>Denilson Catanha</h4>
-            </div>
-
     </section>
 
     <div class="container"><hr class="divisor"></div>
@@ -268,7 +301,7 @@
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-info">
+                <div class="footer-info" id="contacto">
                     <h3>Contactos Oficiais</h3>
                     <p><i class="fa-solid fa-phone"></i> +244 927 908 720</p>
                     <p><i class="fa-solid fa-envelope"></i> websitesolution717@gmail.com</p>

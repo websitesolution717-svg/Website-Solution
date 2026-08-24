@@ -108,48 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Aguarda o DOM estar completamente carregado para garantir que os elementos existem
 document.addEventListener("DOMContentLoaded", () => {
     
@@ -214,6 +172,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log("Carrossel automático de testemunhos ativado. Rotação a cada 4.5 segundos.");
 });
+
+
+
+//Menu mobile lateraal
+const openMenuBtn = document.getElementById('openMenu');
+const closeMenuBtn = document.getElementById('closeMenu');
+const sidebarMenu = document.getElementById('sidebarMenu');
+const sidebarOverlay = document.getElementById('sidebarOverlay');
+const menuLinks = document.querySelectorAll('.sidebar-links a');
+
+function openMenu() {
+  sidebarMenu.classList.add('active');
+  sidebarOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+}
+
+function closeMenu() {
+  sidebarMenu.classList.remove('active');
+  sidebarOverlay.classList.remove('active');
+  document.body.style.overflow = ''; // Ativa scroll novamente
+}
+
+openMenuBtn.addEventListener('click', openMenu);
+closeMenuBtn.addEventListener('click', closeMenu);
+sidebarOverlay.addEventListener('click', closeMenu);
+
+// Fecha o menu se o utilizador clicar num link (para navegação na mesma página)
+menuLinks.forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+
+
+
+
+
 
 
 
