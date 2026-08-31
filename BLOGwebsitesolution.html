@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Solution - Blog</title>
+
+  <style>
+    /* Reset & Variáveis */
+    * { 
+    margin: 0;
+    padding: 0; 
+    box-sizing: 
+    border-box; 
+    font-family: 'Segoe UI', 
+    Tahoma, Geneva, Verdana, sans-serif; 
+  }
+    :root {
+      --bg-dark: #0f172a;
+      --bg-card: #1e293b;
+      --accent: #00d2ff;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+    background-color: var(--bg-dark); 
+    color: var(--text); 
+    display: flex; 
+    flex-direction: column; 
+    min-height: 100vh; 
+  }
+
+    /* Header */
+    header {
+      background-color: var(--bg-card);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    .logo { 
+    font-size: 1.4rem; 
+    font-weight: bold; 
+    color: var(--accent); 
+  }
+
+    /* Menu Lateral Mobile */
+    .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
+    .sidebar {
+      position: fixed;
+      top: 0; left: -260px;
+      width: 260px; height: 100%;
+      background-color: var(--bg-card);
+      transition: left 0.3s ease;
+      z-index: 200;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .sidebar.active { left: 0; }
+    .sidebar-close { align-self: flex-end; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .sidebar a { color: var(--text); text-decoration: none; font-size: 1.1rem; transition: color 0.2s; }
+    .sidebar a:hover { color: var(--accent); }
+    .overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6); display: none; z-index: 150;
+    }
+    .overlay.active { display: block; }
+
+    /* Container Principal */
+    main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; width: 100%; }
+    .hero { text-align: center; margin-bottom: 3rem; }
+    .hero h1 { font-size: 2.2rem; margin-bottom: 0.5rem; color: var(--accent); }
+    .hero p { color: var(--text-muted); }
+
+    /* Layout da Grid de Conteúdo */
+    .section-title { font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 0.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+
+    /* Card de Conteúdo */
+    .card { background-color: var(--bg-card); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; }
+    .card-media { width: 100%; height: 180px; object-fit: cover; background-color: #334155; }
+    .card-body { padding: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+    .tag { font-size: 0.75rem; background-color: rgba(0, 210, 255, 0.1); color: var(--accent); padding: 0.2rem 0.5rem; border-radius: 4px; width: fit-content; }
+    .card-title { font-size: 1.1rem; }
+    .card-desc { font-size: 0.9rem; color: var(--text-muted); flex: 1; }
+    .card-footer { font-size: 0.8rem; color: var(--text-muted); margin-top: 1rem; }
+
+    /* --- MELHORIAS VISUAIS (USANDO SUAS TAGS ATUAIS) --- */
+
+/* 1. Efeito Moderno nos Cards dos Vídeos e Posts (<article>) */
+article {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre cada card */
+article:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: #00d2ff; /* Azul que combina com o título "Aprenda, Explore & Crie" */
+}
+
+/* 2. Destaque nas Tags de Categoria (<span> como "Aprender HTML/CSS" e "JavaScript") */
+article span {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(0, 210, 255, 0.1);
+  color: #00d2ff;
+  border: 1px solid rgba(0, 210, 255, 0.25);
+  margin-bottom: 8px;
+}
+
+/* 3. Ajuste de Espaçamento nos Títulos dos Cards (<h3>) */
+article h3 {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+/* 4. Scrollbar Discreta e Profissional para a Página */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f2937;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00d2ff;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  width: 100%;
+  height: 80%;
+  z-index: 0;
+}
+
+    /* Footer */
+    footer { text-align: center; padding: 2rem; background-color: var(--bg-card); color: var(--text-muted); margin-top: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- Header & Menu Mobile -->
+  <header>
+    <div class="logo">Website Solution - Blog</div>
+    <button class="menu-toggle" id="openMenu">☰</button>
+  </header>
+
+  <!-- Menu Lateral (Drawer) -->
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="closeMenu">✕</button>
+    <a href="#">🏠 Início</a>
+    <a href="VideoAulas.html">🎥 Vídeo Aulas</a>
+    <a href="GaleriaBastidores.html">📸 Galeria & Bastidores</a>
+    <a href="ProjetosWeb.html">💻 Projetos Web</a>
+    <a href="ReceberNovidades.html">📩 Receber Novidades</a>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main>
+    <section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+        <source src="imagens/kling_20260819_VIDEO_Create_a_p_5147_0.mp4" type="video/mp4">
+      </video>
+      <br>
+      <h1>Aprenda, Explore & Crie</h1>
+      <p>O universo da programação web e tecnologia em vídeos, fotos e tutoriais práticos.</p>
+    </section>
+
+    <br><br><br><br>
+    <!-- Seção de Vídeos / Aulas -->
+    <h2 class="section-title">🎥 Últimos Vídeos & Tutoriais</h2>
+    <section class="grid">
+      <article class="card">
+        <iframe class="card-media" src="https://www.youtube.com/embed/placeholder" title="Vídeo" frameborder="0" allowfullscreen></iframe>
+        <div class="card-body">
+          <span class="tag">Aprender HTML/CSS</span>
+          <h3 class="card-title">Criando Layouts Modernos com CSS Grid</h3>
+          <p class="card-desc">Passo a passo rápido para dominar grids e criar sites responsivos.</p>
+          <div class="card-footer">Publicado em 26 de Agosto</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <iframe class="card-media" src="https://www.youtube.com/embed/placeholder" title="Vídeo" frameborder="0" allowfullscreen></iframe>
+        <div class="card-body">
+          <span class="tag">JavaScript</span>
+          <h3 class="card-title">Como Funciona o Event Loop no JS?</h3>
+          <p class="card-desc">Entenda o motor por trás do JavaScript de forma simples e divertida.</p>
+          <div class="card-footer">Publicado em 24 de Agosto</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- Seção de Fotos / Bastidores -->
+    <h2 class="section-title">📸 Fotos & Bastidores da Website Solution</h2>
+    <section class="grid">
+      <article class="card">
+        <img class="card-media" src="imagens/file_00000000c56081f48132cda250b6a8ba.png" alt="Setup de Trabalho">
+        <div class="card-body">
+          <span class="tag">Entretenimento & Setup</span>
+          <h3 class="card-title">Meu Setup de Programação em 2026</h3>
+          <p class="card-desc">Confira os equipamentos e ferramentas que uso no dia a dia do desenvolvimento.</p>
+          <div class="card-footer">Publicado em 20 de Agosto</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Website Solution - Transformando Ideias em Código.</p>
+  </footer>
+
+  <!-- Script para Controle do Menu Lateral -->
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+
+    function toggleMenu() {
+      sidebar.classList.toggle('active');
+      overlay.classList.toggle('active');
+    }
+
+    openBtn.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+    overlay.addEventListener('click', toggleMenu);
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria & Bastidores - Tech&Code</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    :root { --bg-dark: #0f172a; --bg-card: #1e293b; --accent: #00d2ff; --text: #f8fafc; --text-muted: #94a3b8; }
+    body { background-color: var(--bg-dark); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    header { background-color: var(--bg-card); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
+    .logo { font-size: 1.4rem; font-weight: bold; color: var(--accent); text-decoration: none; }
+    .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
+    
+    .sidebar { position: fixed; top: 0; left: -260px; width: 260px; height: 100%; background-color: var(--bg-card); transition: left 0.3s ease; z-index: 200; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .sidebar.active { left: 0; }
+    .sidebar-close { align-self: flex-end; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .sidebar a { color: var(--text); text-decoration: none; font-size: 1rem; padding: 0.5rem 0; }
+    .sidebar a:hover, .sidebar a.active { color: var(--accent); font-weight: bold; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; z-index: 150; }
+    .overlay.active { display: block; }
+    
+    main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; width: 100%; flex: 1; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .gallery-item { background: var(--bg-card); height: 200px; border-radius: 8px; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+
+    footer { text-align: center; padding: 2rem; background-color: var(--bg-card); color: var(--text-muted); margin-top: auto; border-top: 1px solid #334155; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Tech&Code</a>
+    <button class="menu-toggle" id="openMenu">☰</button>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="closeMenu">✕</button>
+    <a href="index.html">🏠 Início</a>
+    <a href="VideoAulas.html">🎥 Vídeo Aulas</a>
+    <a href="galeria.html" class="active">📸 Galeria & Bastidores</a>
+    <a href="projetos.html">💻 Projetos Web</a>
+    <a href="novidades.html">📩 Receber Novidades</a>
+  </aside>
+
+  <main>
+    <h2 style="margin-bottom: 1.5rem; border-left: 4px solid var(--accent); padding-left: 0.5rem;">📸 Bastidores & Setup</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">Foto Setup 1</div>
+      <div class="gallery-item">Foto Gravação de Aulas</div>
+      <div class="gallery-item">Evento Tech 2026</div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tech&Code - Transformando Ideias em Código.</p>
+  </footer>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('openMenu').onclick = () => { sidebar.classList.add('active'); overlay.classList.add('active'); };
+    document.getElementById('closeMenu').onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+    overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+  </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Solution - Plataforma de Vídeo Aulas</title>
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    :root { --bg-dark: #0f172a; --bg-card: #1e293b; --accent: #00d2ff; --accent-green: #10b981; --text: #f8fafc; --text-muted: #94a3b8; }
+    body { background-color: var(--bg-dark); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    header { background-color: var(--bg-card); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #334155; }
+    .logo { font-size: 1.4rem; font-weight: bold; color: var(--accent); text-decoration: none; }
+    .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
+    
+    .sidebar { position: fixed; top: 0; left: -260px; width: 260px; height: 100%; background-color: var(--bg-card); transition: left 0.3s ease; z-index: 200; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .sidebar.active { left: 0; }
+    .sidebar-close { align-self: flex-end; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .sidebar a { color: var(--text); text-decoration: none; font-size: 1rem; transition: color 0.2s; padding: 0.5rem 0; }
+    .sidebar a:hover, .sidebar a.active { color: var(--accent); font-weight: bold; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; z-index: 150; }
+    .overlay.active { display: block; }
+    
+    main { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; width: 100%; flex: 1; }
+    
+    /* Filtros Rápidos */
+    .filter-bar { display: flex; gap: 0.8rem; overflow-x: auto; padding-bottom: 1rem; margin-bottom: 2rem; }
+    .filter-btn { background: var(--bg-card); border: 1px solid #334155; color: var(--text); padding: 0.5rem 1.2rem; border-radius: 20px; cursor: pointer; white-space: nowrap; transition: 0.3s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--accent); color: #000; font-weight: bold; border-color: var(--accent); }
+
+    /* Layout do Player Principal e Cursos Disponíveis */
+    .section-title { font-size: 1.4rem; margin-bottom: 1.2rem; border-left: 4px solid var(--accent); padding-left: 0.5rem; display: flex; align-items: center; justify-content: space-between; }
+    
+    .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+    .course-card { background-color: var(--bg-card); border-radius: 10px; overflow: hidden; border: 1px solid #334155; transition: transform 0.2s, border-color 0.2s; display: flex; flex-direction: column; }
+    .course-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .course-thumb { width: 100%; height: 160px; background-color: #0284c7; display: flex; align-items: center; justify-content: center; font-size: 3rem; position: relative; }
+    .badge { position: absolute; top: 10px; right: 10px; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; }
+    .badge-free { background: var(--accent-green); color: #000; }
+    .badge-new { background: #f59e0b; color: #000; }
+    
+    .course-content { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .course-meta { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.8rem; display: flex; justify-content: space-between; }
+    .btn-watch { margin-top: 1rem; width: 100%; padding: 0.6rem; background: var(--accent); color: #000; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; transition: opacity 0.2s; text-align: center; text-decoration: none; }
+    .btn-watch:hover { opacity: 0.9; }
+
+    /* Área de Sugestões de Conteúdo */
+    .suggestion-box { background: var(--bg-card); padding: 2rem; border-radius: 10px; border: 1px solid #334155; margin-bottom: 3rem; }
+    .form-group { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid #334155; border-radius: 6px; color: var(--text); }
+    .form-group button { align-self: flex-start; padding: 0.7rem 1.5rem; background: var(--accent); color: #000; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+
+    footer { text-align: center; padding: 2rem; background-color: var(--bg-card); color: var(--text-muted); margin-top: auto; border-top: 1px solid #334155; }
+  
+    .pulse {
+      width: 7px;
+      height: 7px;
+      background: #59c3c3;
+      border-radius: 50%;
+      box-shadow: 0 0 0 5px rgba(89, 195, 195, 0.1);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        box-shadow: 0 0 0 10px rgba(89, 195, 195, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="index.html" class="logo">Website Solution</a>
+    <button class="menu-toggle" id="openMenu">☰</button>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="closeMenu">✕</button>
+    <a href="index.html">🏠 Início</a>
+    <a href="aulas.html" class="active">🎥 Vídeo Aulas</a>
+    <a href="galeria.html">📸 Galeria & Bastidores</a>
+    <a href="projetos.html">💻 Projetos Web</a>
+    <a href="novidades.html">📩 Receber Novidades</a>
+  </aside>
+
+  <main>
+    <!-- Filtros de Categorias -->
+    <div class="filter-bar">
+      <button class="filter-btn active">Todos</button>
+      <button class="filter-btn">Frontend</button>
+      <button class="filter-btn">Backend</button>
+      <button class="filter-btn">DevOps & Nuvem</button>
+      <button class="filter-btn">Lançamentos</button>
+    </div>
+
+  <!-- Hero Section -->
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline>
+        <source src="imagens/kling_20260819_VIDEO_Create_a_p_5147_0.mp4" type="video/mp4">
+      </video>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <ddiv class="hero-baadge">
+          <span class="pulse"></span>
+        </ddiv>
+        <h1>🎥 Vídeo Aulas</h1>
+        <p>Explore nosso catálogo de vídeos e tutoriais para aprimorar suas habilidades em programação web.</p>
+      </div>
+    </section>
+
+    <!-- Cursos Lançados & Disponíveis -->
+    <div class="section-title">
+      <span>🚀 Cursos & Aulas Lançadas</span>
+    </div>
+    
+    <div class="course-grid">
+      <!-- Card 1 -->
+      <article class="course-card">
+        <div class="course-thumb">
+          ⚡
+          <span class="badge badge-free">Gratuito</span>
+        </div>
+        <div class="course-content">
+          <div>
+            <h3>Dominando HTML5 & CSS Flexbox</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">Construa interfaces modernas e totalmente responsivas do absoluto zero.</p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <span>⏱️ 12 Aulas</span>
+              <span>⭐ 4.9 (120 avaliações)</span>
+            </div>
+            <a href="#" class="btn-watch">Assistir Agora</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="course-card">
+        <div class="course-thumb" style="background:#4338ca;">
+          🚀
+          <span class="badge badge-new">Novo</span>
+        </div>
+        <div class="course-content">
+          <div>
+            <h3>JavaScript Moderno & Async/Await</h3>
+            <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">Aprenda a trabalhar com requisições APIs, Promises e código assíncrono.</p>
+          </div>
+          <div>
+            <div class="course-meta">
+              <span>⏱️ 18 Aulas</span>
+              <span>⭐ 5.0 (85 avaliações)</span>
+            </div>
+            <a href="#" class="btn-watch">Assistir Agora</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Caixa de Sugestões -->
+    <section class="suggestion-box">
+      <h3>💡 Qual aula ou curso você quer ver a seguir?</h3>
+      <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.3rem;">Deixe sua sugestão de tema de tecnologia ou programação web que criarei em vídeo!</p>
+      <form class="form-group" onsubmit="event.preventDefault(); alert('Sugestão enviada com sucesso!');">
+        <input type="text" placeholder="Seu Nome" required>
+        <textarea rows="3" placeholder="Ex: Gostaria de uma aula sobre integração de pagamentos no Node.js..." required></textarea>
+        <button type="submit">Enviar Sugestão</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tech&Code - Transformando Ideias em Código.</p>
+  </footer>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('openMenu').onclick = () => { sidebar.classList.add('active'); overlay.classList.add('active'); };
+    document.getElementById('closeMenu').onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+    overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+  </script>
+</body>
+</html>

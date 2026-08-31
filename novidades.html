@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novidades & Lives - Tech&Code</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    :root { --bg-dark: #0f172a; --bg-card: #1e293b; --accent: #00d2ff; --heart: #ef4444; --text: #f8fafc; --text-muted: #94a3b8; }
+    body { background-color: var(--bg-dark); color: var(--text); display: flex; flex-direction: column; min-height: 100vh; }
+    
+    header { background-color: var(--bg-card); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; position: sticky; top: 0; z-index: 100; }
+    .logo { font-size: 1.4rem; font-weight: bold; color: var(--accent); text-decoration: none; }
+    .menu-toggle { font-size: 1.8rem; background: none; border: none; color: var(--text); cursor: pointer; }
+    
+    .sidebar { position: fixed; top: 0; left: -260px; width: 260px; height: 100%; background-color: var(--bg-card); transition: left 0.3s ease; z-index: 200; padding: 2rem 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+    .sidebar.active { left: 0; }
+    .sidebar-close { align-self: flex-end; background: none; border: none; color: var(--text-muted); font-size: 1.5rem; cursor: pointer; }
+    .sidebar a { color: var(--text); text-decoration: none; font-size: 1rem; padding: 0.5rem 0; }
+    .sidebar a:hover, .sidebar a.active { color: var(--accent); font-weight: bold; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: none; z-index: 150; }
+    .overlay.active { display: block; }
+    
+    main { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; width: 100%; flex: 1; }
+    
+    /* Seção da Transmissão / Live */
+    .live-container { background: var(--bg-card); border-radius: 12px; border: 1px solid #334155; overflow: hidden; margin-bottom: 2rem; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: #dc2626; color: #fff; font-size: 0.8rem; font-weight: bold; padding: 0.3rem 0.8rem; border-radius: 20px; margin: 1rem; }
+    .pulse { width: 8px; height: 8px; background: #fff; border-radius: 50%; animation: pulse 1s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+    
+    .video-frame { width: 100%; height: 400px; background: #000; display: flex; align-items: center; justify-content: center; border-top: 1px solid #334155; border-bottom: 1px solid #334155; }
+    
+    /* Reações e Ações */
+    .interaction-bar { padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .btn-adore { background: rgba(239, 68, 68, 0.1); color: var(--heart); border: 1px solid var(--heart); padding: 0.6rem 1.2rem; border-radius: 30px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: 0.2s; }
+    .btn-adore:hover { background: var(--heart); color: #fff; }
+
+    /* Caixa de Comentários Dinâmicos */
+    .comments-section { background: var(--bg-card); padding: 1.5rem; border-radius: 12px; border: 1px solid #334155; }
+    .comment-form { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; margin-bottom: 2rem; }
+    .comment-form textarea { width: 100%; padding: 0.8rem; background: var(--bg-dark); border: 1px solid #334155; border-radius: 6px; color: var(--text); resize: vertical; }
+    .comment-form button { align-self: flex-end; padding: 0.7rem 1.5rem; background: var(--accent); color: #000; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    
+    .comment-list { display: flex; flex-direction: column; gap: 1rem; }
+    .comment-card { background: var(--bg-dark); padding: 1rem; border-radius: 8px; border-left: 3px solid var(--accent); }
+    .comment-header { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+    .comment-user { font-weight: bold; color: var(--accent); }
+
+    footer { text-align: center; padding: 2rem; background-color: var(--bg-card); color: var(--text-muted); margin-top: auto; border-top: 1px solid #334155; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">Tech&Code</a>
+    <button class="menu-toggle" id="openMenu">☰</button>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <aside class="sidebar" id="sidebar">
+    <button class="sidebar-close" id="closeMenu">✕</button>
+    <a href="index.html">🏠 Início</a>
+    <a href="aulas.html">🎥 Vídeo Aulas</a>
+    <a href="galeria.html">📸 Galeria & Bastidores</a>
+    <a href="projetos.html">💻 Projetos Web</a>
+    <a href="novidades.html" class="active">🔴 Novidades & Live</a>
+  </aside>
+
+  <main>
+    <!-- Área de Transmissão Direta -->
+    <section class="live-container">
+      <div class="live-badge"><span class="pulse"></span> EM DIRETO / LIVE</div>
+      <div class="video-frame">
+        <!-- Substitua o src pelo link embed do YouTube Live ou Twitch -->
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/live_stream?channel=SEU_CANAL_ID" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="interaction-bar">
+        <h3>Programando uma API em PHP e MySQL ao Vivo</h3>
+        <button class="btn-adore" id="adoreBtn">
+          ❤️ Adoro <span id="adoreCount">124</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Seção de Comentários em Tempo Real -->
+    <section class="comments-section">
+      <h3>💬 Chat & Comentários da Comunidade</h3>
+      <form class="comment-form" action="processa_comentario.php" method="POST">
+        <textarea name="comentario" rows="3" placeholder="Deixe o seu comentário ou pergunta sem precisar de registo..." required></textarea>
+        <button type="submit">Publicar Comentário</button>
+      </form>
+
+      <!-- Lista de Comentários do Banco de Dados -->
+      <div class="comment-list">
+        <div class="comment-card">
+          <div class="comment-header">
+            <span class="comment-user">DevAnonimo_89</span>
+            <span>Hoje às 17:30</span>
+          </div>
+          <p>Excelente transmissão! Como faço para conectar esse front com o MySQL no XAMPP?</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Tech&Code - Transformando Ideias em Código.</p>
+  </footer>
+
+  <script>
+    // Menu Lateral
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    document.getElementById('openMenu').onclick = () => { sidebar.classList.add('active'); overlay.classList.add('active'); };
+    document.getElementById('closeMenu').onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+    overlay.onclick = () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); };
+
+    // Botão Adoro / Reação Dinâmica
+    let count = 124;
+    let liked = false;
+    document.getElementById('adoreBtn').onclick = function() {
+      if(!liked) {
+        count++;
+        this.style.background = '#ef4444';
+        this.style.color = '#fff';
+        liked = true;
+      } else {
+        count--;
+        this.style.background = 'rgba(239, 68, 68, 0.1)';
+        this.style.color = '#ef4444';
+        liked = false;
+      }
+      document.getElementById('adoreCount').innerText = count;
+    };
+  </script>
+</body>
+</html>
